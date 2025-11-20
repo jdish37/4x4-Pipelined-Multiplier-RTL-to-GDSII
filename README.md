@@ -1,3 +1,9 @@
+#   4×4 Pipelined Multiplier — RTL to GDSII Flow
+
+Complete ASIC design flow: RTL → Verification → Synthesis → Floorplan → CTS → Routing → Signoff.
+
+---
+
 # 1. Project Overview
 
 The **4×4 Pipelined Multiplier (RTL → GDSII)** project demonstrates a complete end-to-end VLSI design flow, starting from RTL Verilog design and progressing all the way to signoff-level physical implementation using industry-standard tools such as:
