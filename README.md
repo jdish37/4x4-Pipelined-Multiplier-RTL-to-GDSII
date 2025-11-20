@@ -4,11 +4,30 @@ The **4×4 Pipelined Multiplier (RTL → GDSII)** project demonstrates a complet
 
 - Cadence Genus (logic synthesis)
 - Cadence Innovus (physical design, routing & signoff)
-- NCLaunch / Xcelium (simulation & verification)
+- NCLaunch (simulation & verification)
 
 This project implements a **3-stage pipelined 4-bit × 4-bit multiplier**, optimized for high throughput. By pipelining the multiplier, new inputs are accepted every clock cycle while previous operations propagate through the stages. This significantly increases performance compared to a purely combinational multiplier.
 
 ---
+
+# Table of Contents
+
+- [1. Project Overview](#1-project-overview)
+- [2. RTL Design](#2-rtl-design)
+- [3. Testbench and Verification (NCLaunch)](#3-testbench-and-verification-nclaunch)
+- [4. Synthesis (Cadence Genus)](#4-synthesis-cadence-genus)
+  - [4.1 SDC File Explanation](#sdc-file-timing-constraints-used-in-synthesis)
+- [5. Physical Design (Cadence Innovus)](#5-physical-design-cadence-innovus)
+  - [5.1 Floorplan](#51-floorplan)
+  - [5.2 Power Planning (Rings-Stripes-SRoute)](#52-power-planning-rings-stripes-sroute)
+  - [5.3 Placement (Standard--Physical Cells)](#53-placement-standard--physical-cells)
+  - [5.4 Clock Tree Synthesis (CTS)](#54-clock-tree-synthesis-cts)
+  - [5.5 Routing (NanoRoute)](#55-routing-nanoroute)
+  - [5.6 Timing Analysis and ECO](#56-timing-analysis-and-eco-engineering-change-order)
+  - [5.7 RC Extraction and SDF Generation](#57-rc-extraction-corner-analysis-and-sdf-generation)
+  - [5.8 DRC, Connectivity, Final Netlist, Save ENC](#58-drc-connectivity-checks-final-netlist-and-innovus-database-save)
+- [6. Conclusion](#6-conclusion)
+
 
 ## Project Objectives
 
@@ -1486,7 +1505,7 @@ Developers use the `.enc` file for:
 
 ---
 
-# 6. Conclusion and Future Work
+# 6. Conclusion
 
 ## Conclusion
 
@@ -1512,69 +1531,7 @@ The pipelined multiplier achieves:
 - **Clean routing and power distribution** for reliability  
 - **Fully verified functionality** across all corners  
 
-The project serves as a strong end-to-end demonstration of the VLSI backend design methodology.
-
 ---
-
-## Future Work
-
-The following extensions can further enhance the project:
-
-### 1. Higher Bit-Width Multiplier
-Scale the design to:
-- 8×8  
-- 16×16  
-- 32×32 pipelined multiplier  
-
-Larger multipliers stress placement, routing, and CTS more significantly.
-
-### 2. Low-Power Enhancements
-Add techniques such as:
-- Clock gating  
-- Multi-Vt cell selection  
-- Power gating  
-- Operand isolation  
-- Data gating for partial products  
-
-This would reduce dynamic and leakage power.
-
-### 3. Formal Verification
-Add:
-- SVA (SystemVerilog Assertions)  
-- Equivalence checking between RTL and synthesized netlist  
-
-### 4. Multi-Corner, Multi-Mode (MCMM) Optimization
-Extend timing closure to multiple modes (functional, scan) and corners simultaneously.
-
-### 5. Gate-Level Simulation with SDF
-Run:
-- Max-delay simulation using `func_slow_max.sdf`  
-- Min-delay simulation using `func_fast_min.sdf`  
-
-To verify:
-- Setup timing under worst case  
-- Hold timing under best case  
-- Reset/clock/pipeline synchronization
-
-### 6. Full GDS Export
-Generate GDSII for fabrication or use for DRC/LVS signoff in tools like Calibre.
-
-### 7. Add More Visualization
-Include:
-- Congestion maps  
-- Clock tree visualization  
-- Routing heatmaps  
-- IR-drop analysis  
-
-### 8. Documentation Improvements
-Enhance the README by adding:
-- Architectural diagrams  
-- Timing diagrams  
-- More waveform captures  
-- Final DRC summary screenshots  
-
----
-
 
 
 
