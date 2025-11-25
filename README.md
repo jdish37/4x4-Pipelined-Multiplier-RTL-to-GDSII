@@ -97,7 +97,7 @@ This project follows a real-world ASIC flow:
 
 | Stage | Tool | Purpose |
 |-------|------|---------|
-| RTL Simulation | NCLaunch / Xcelium | Functional simulation |
+| RTL Simulation | NCLaunch | Functional simulation |
 | Synthesis | Cadence Genus | Logic synthesis; timing/area/power analysis |
 | Physical Design | Cadence Innovus | Floorplan → Placement → CTS → Routing |
 
